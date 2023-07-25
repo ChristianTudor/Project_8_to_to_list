@@ -200,7 +200,30 @@ describe('controller', function () {
 		});
 
 		it('should update the view', function () {
-			// TODO: write test
+
+			const todos = [
+				{
+					id: 1,
+					title: 'todo 1',
+					completed: false
+				},
+				{
+					id: 2,
+					title: 'todo 2',
+					completed: false
+				}
+
+			]
+
+			setUpModel(todos);
+
+			subject.setView('');
+
+			view.trigger('toggleAll', {completed: true}); // change complete to checked and true to false when testing to see the diff
+			
+			expect(view.render).toHaveBeenCalledWith('elementComplete', {id: 1, completed: true});
+
+			expect(view.render).toHaveBeenCalledWith('elementComplete', {id: 2, completed: true});		
 		});
 	});
 
