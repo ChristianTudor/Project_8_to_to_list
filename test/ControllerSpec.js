@@ -173,7 +173,30 @@ describe('controller', function () {
 
 	describe('toggle all', function () {
 		it('should toggle all todos to completed', function () {
-			// TODO: write test
+
+			const todos = [
+				{
+					id: 1,
+					title: 'todo 1',
+					completed: false
+				},
+				{
+					id: 2,
+					title: 'todo 2',
+					completed: false
+				}
+
+			]
+
+			setUpModel(todos);
+
+			subject.setView('');
+
+			view.trigger('toggleAll', {completed: true}) //on or off when testing
+
+			expect(model.update).toHaveBeenCalledWith(1, {completed: true}, jasmine.any(Function));
+			expect(model.update).toHaveBeenCalledWith(2, {completed: true}, jasmine.any(Function));
+			
 		});
 
 		it('should update the view', function () {
