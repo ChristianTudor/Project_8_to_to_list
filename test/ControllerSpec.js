@@ -62,7 +62,7 @@ describe('controller', function () {
 		setUpModel([]);
 
 		subject.setView('');
-		
+
 		expect(view.render).toHaveBeenCalledWith('showEntries', []);
 	});
 
@@ -87,7 +87,15 @@ describe('controller', function () {
 		});
 
 		it('should show active entries', function () {
-			// TODO: write test
+			var todo = {title: 'my todo', completed: false};
+
+			setUpModel([todo]);
+
+			subject.setView('#/active');
+
+			expect(model.read).toHaveBeenCalledWith({completed: false}, jasmine.any(Function))
+
+			expect(view.render).toHaveBeenCalledWith('showEntries', [todo]);
 		});
 
 		it('should show completed entries', function () {
