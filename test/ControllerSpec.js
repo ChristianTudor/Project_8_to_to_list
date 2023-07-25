@@ -220,7 +220,7 @@ describe('controller', function () {
 			subject.setView('');
 
 			view.trigger('toggleAll', {completed: true}); // change complete to checked and true to false when testing to see the diff
-			
+
 			expect(view.render).toHaveBeenCalledWith('elementComplete', {id: 1, completed: true});
 
 			expect(view.render).toHaveBeenCalledWith('elementComplete', {id: 2, completed: true});		
@@ -229,7 +229,17 @@ describe('controller', function () {
 
 	describe('new todo', function () {
 		it('should add a new todo to the model', function () {
-			// TODO: write test
+
+			setUpModel([]);
+
+			subject.setView('');
+
+			view.trigger('newTodo', 'milk');
+
+			expect(model.create).toHaveBeenCalledWith('milk', jasmine.any(Function));
+
+
+
 		});
 
 		it('should add a new todo to the view', function () {
