@@ -99,7 +99,15 @@ describe('controller', function () {
 		});
 
 		it('should show completed entries', function () {
-			// TODO: write test
+			var todo = {title: 'my todo', completed: true};
+
+			setUpModel([todo]);
+
+			subject.setView('#/completed');
+
+			expect(model.read).toHaveBeenCalledWith({completed: true}, jasmine.any(Function))
+
+			expect(view.render).toHaveBeenCalledWith('showEntries', [todo]);
 		});
 	});
 
